@@ -27,7 +27,9 @@ ActiveRecord::Schema.define(version: 2021_10_17_070556) do
 
   create_table "movies", force: :cascade do |t|
     t.string "name"
+    t.text "body"
     t.string "image_id"
+    t.float "review"
     t.datetime "created_at", null: false
     t.datetime "update_at"
     t.datetime "updated_at", null: false
