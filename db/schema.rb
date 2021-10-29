@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_10_17_070556) do
+ActiveRecord::Schema.define(version: 2021_10_21_082340) do
 
   create_table "customers", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_10_17_070556) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "profile_image_id"
     t.index ["email"], name: "index_customers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_customers_on_reset_password_token", unique: true
   end
@@ -28,6 +29,7 @@ ActiveRecord::Schema.define(version: 2021_10_17_070556) do
   create_table "movies", force: :cascade do |t|
     t.string "name"
     t.text "body"
+    t.integer "customer_id"
     t.string "image_id"
     t.float "review"
     t.datetime "created_at", null: false

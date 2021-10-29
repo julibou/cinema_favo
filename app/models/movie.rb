@@ -1,5 +1,4 @@
 class Movie < ApplicationRecord
-  
-   attachment :image
-   
+  attachment :image
+  belongs_to :customer
 end

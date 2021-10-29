@@ -3,6 +3,7 @@ class CreateMovies < ActiveRecord::Migration[5.2]
     create_table :movies do |t|
       t.string :name
       t.text :body
+      t.integer :customer_id
       t.string :image_id
       t.float :review
       t.datetime :created_at

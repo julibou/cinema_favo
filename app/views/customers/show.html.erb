@@ -1,7 +1,19 @@
+  <h2>User Page</h2>
+
+<table class="table">
+  <tbody>
+  <tr>
+    <% if @customer.id == current_customer.id %>
+    <p><%= link_to "プロフィール編集", edit_customer_path(@customer) %></p>
+  <% end %>
+	  <%= attachment_image_tag @customer, :profile_image,  format: 'jpeg', fallback: "image.jpg", size: "100x100" %>
+	  <th><%= @customer.name %></th>
+  </tr>
+</table>
+
 <table>
   <thead>
     <tr>
-      <th></th>
        <th>ユーザー</th>
       <th>映画タイトル</th>
       <th>映画画像</th>
@@ -12,16 +24,16 @@
   <tbody>
 <% @movies.each do |movie| %>
     <tr>
-      <td><%= attachment_image_tag movie.customer, :profile_image,  format: 'jpeg', fallback: "image.jpg", size: "100x100" %></td>
         <td><%= link_to movie.customer.name, customer_path(movie.customer_id) %></td>
         <td><%= movie.name %></td>
         <td><%= attachment_image_tag movie, :image, size: "50x50" %></td>
         <td class="movie-review" data-score="<%= movie.review %>"></td>
-        <td><%= movie.body %></td>
+        <td><%= movie.body %> <%= link_to "編集する",movies_edit_path %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
+
 <script>
   $('.movie-review').raty({
     readOnly: true,
@@ -32,6 +44,3 @@
     half: true
   });
 </script>
-
-
-

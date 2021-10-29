@@ -1,5 +1,6 @@
 class MoviesController < ApplicationController
   def index
+    @movies = Movie.all
   end
 
   def show
@@ -7,9 +8,9 @@ class MoviesController < ApplicationController
 
   def create
     movie = Movie.new(movie_params)
+    movie.customer = current_customer
     movie.save
-
-
+    redirect_to movies_index_path
 
   end
 
@@ -18,11 +19,19 @@ class MoviesController < ApplicationController
   end
 
   def edit
+     @movie =Movie.find(params[:id])
+  end
+  
+  def destroy
+        movie = Movie.find(params[:id])
+        movie.destroy
+        #redirect_to cart_items_path
   end
 
-   private
+    private
+
   def movie_params
-    params.require(:movie).permit(:name, :image, :review)
+    params.require(:movie).permit(:name, :image, :review, :body)
   end
 
-  end
+end
