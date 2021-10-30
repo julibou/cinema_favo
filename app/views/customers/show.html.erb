@@ -28,7 +28,10 @@
         <td><%= movie.name %></td>
         <td><%= attachment_image_tag movie, :image, size: "50x50" %></td>
         <td class="movie-review" data-score="<%= movie.review %>"></td>
-        <td><%= movie.body %> <%= link_to "編集する",movies_edit_path %></td>
+        <td><%= movie.body %> 
+        <%= link_to "編集する",edit_movie_path(movie.id),class: "btn btn-sm btn-success" %>　
+        <%= link_to "削除", movie_path(movie.id), method: :delete, class: "btn btn-sm btn-danger" %>
+        </td>
       </tr>
     <% end %>
   </tbody>

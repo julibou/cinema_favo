@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def after_sign_in_path_for(resource)
-    movies_index_path(resource)
+    movies_path(resource)
   end
 
   def configure_permitted_parameters

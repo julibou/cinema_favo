@@ -10,7 +10,7 @@ class MoviesController < ApplicationController
     movie = Movie.new(movie_params)
     movie.customer = current_customer
     movie.save
-    redirect_to movies_index_path
+    redirect_to movies_path
 
   end
 
@@ -21,11 +21,17 @@ class MoviesController < ApplicationController
   def edit
      @movie =Movie.find(params[:id])
   end
-  
+
   def destroy
         movie = Movie.find(params[:id])
         movie.destroy
-        #redirect_to cart_items_path
+        redirect_to customer_path(current_customer.id)
+  end
+
+  def update
+    @movie = Movie.find(params[:id])
+    @movie.update(movie_params)
+    redirect_to customer_path
   end
 
     private

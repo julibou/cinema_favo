@@ -1,8 +1,9 @@
 class CustomersController < ApplicationController
   def show
-    @customer =Customer.find(params[:id])
-    @movies =@customer.movies #ユーザーが投稿した映画
-  
+
+    @movies = current_customer.movies #ユーザーが投稿した映画
+    @customer = current_customer
+
 
   end
 

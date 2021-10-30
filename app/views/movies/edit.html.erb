@@ -1,21 +1,21 @@
-<h1>Movies#edit</h1>
+<h1>Edit Movie</h1>
 <%= form_with model:@movie, local:true do |f| %>
 
-  <h4>映画タイトル</h4>
-  <%= f.text_field :name %>
-
-  <h4>映画画像</h4>
-  <%= f.attachment_image_tag @movie, :image, :fill, 60, 60, fallback: "image.jpg"  %>
+ <label for="inputName">Name</label>
+  <%= f.text_field :name, autofocus: true, id:"inputName", placeholder:"名前"%>
+  <%= attachment_image_tag @movie, :image, :fill, 60, 60, fallback: "image.jpg"%>
+ <label for="inputImage">Image</label>
+  <%= f.attachment_field :image, placeholder: "プロフィール画像" %>
 
    <div id="review_stars">
     <label>評価</label>
   </div>
   <div class="actions">
     <h4>感想</h4>
-  <%= f.text_area :body %>
-    <%= f.submit '投稿'  %>
+  <td><%= f.text_area :body %></td>
+    <td><%= f.submit '更新'  %></td>
   </div>
-
+ 
 <% end %>
 
 <script>
