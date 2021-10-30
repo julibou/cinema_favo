@@ -1,9 +1,8 @@
 class CustomersController < ApplicationController
   def show
-
-    @movies = current_customer.movies #ユーザーが投稿した映画
-    @customer = current_customer
-
+    @customer = Customer.find(params[:id])
+    @movies = @customer.movies #ユーザーが投稿した映画
+    @bookmarks = Bookmark.where(customer_id: @customer.id)
 
   end
 
